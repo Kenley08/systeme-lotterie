@@ -30,10 +30,6 @@
           </div>
         </li>
 
-
-
-
-
         <li>
           <a href="#subPag" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i>
             <span>Sikisal</span>
@@ -46,7 +42,19 @@
             </ul>
           </div>
         </li>
-        <li><a href="charts.html" class=""><i class="lnr lnr-file-empty"></i> <span>Fiche</span></a></li>
+
+        <li>
+          <a href="#subPa" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i>
+            <span>Fich</span>
+             <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+          <div id="subPa" class="collapse ">
+            <ul class="nav">
+              <li><a href="fiche/list/index.php" class="">list</a></li>
+
+            </ul>
+          </div>
+        </li>
+
         <li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>Rapo</span></a></li>
         <li><a href="panels.html" class=""><i class="lnr lnr-cog"></i> <span>Konfigiration</span></a></li>
 
