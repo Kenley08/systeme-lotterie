@@ -63,11 +63,11 @@ if(isset($_GET['id_admin']) && isset($_GET['etat']) && isset($_GET['id_post'])){
 
 
       ?>
-        </br>  </br>
+
       <form action="" method="post" class="form-inline">
         <input type="text" name="txtnom" class="form-control"  value="<?php if($mesaj){ echo $_POST['txtnom'];}?>"  placeholder="Ex:Fleurine Kenley">
         <input type="submit" name="btnrechercher" value="Rechercher" class="btn btn-success">
-
+  </br>  </br>
       </form>
             <table id="user_adr" class="table table-striped table-bordered">
                 <tr>
@@ -103,7 +103,16 @@ if(isset($_GET['id_admin']) && isset($_GET['etat']) && isset($_GET['id_post'])){
                               echo"Debloquer";
                             }
                         ?>" name="btnblock" class="btn btn-secondary  btn-sm" data-toggle="modal"/></a>
+
+
                       </td>
+
+                      <td>
+                        <a href="?"><input type="submit" value="Modifye" name="btnmodifye" class="btn btn-secondary  btn-sm" data-toggle="modal"/></a>
+
+
+                      </td>
+
                   </tr>
 
                     <?php
@@ -126,12 +135,16 @@ if(isset($_GET['id_admin']) && isset($_GET['etat']) && isset($_GET['id_post'])){
                     <td>
                       <a href="?etat=<?=$liy[4]?>&&id_admin=<?=$liy[5]?>&&id_post=<?=$liy[0]?>"><input type="submit" value="<?php
                       if($liy[4]==1){
-                          echo"bloquer";
+                          echo"Bloke";
                         }else if($liy[4]==0){
-                            echo"Debloquer";
+                            echo"Debloke";
                           }
                       ?>" name="btnblock" class="btn btn-secondary  btn-sm" data-toggle="modal"/></a>
                     </td>
+
+
+
+
 
                   </tr>
                   <?php

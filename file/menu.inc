@@ -12,9 +12,10 @@
             <ul class="nav">
               <li><a href="administration/kesye/new/index.php" class="">Anrejistre</a></li>
               <li><a href="administration/kesye/list/index.php" class="">Liste</a></li>
-              <li><a href="page-lockscreen.html" class="">Cheche</a></li>
+              <li><a href="administration/kesye/Modifye/index.php" class="">Modifye</a></li>
             </ul>
           </div>
+          
         </li>
 
         <li>
@@ -25,7 +26,8 @@
             <ul class="nav">
               <li><a href="administration/responsab/new/index.php" class="">Anrejistre</a></li>
               <li><a href="administration/responsab/list/index.php" class="">Liste</a></li>
-              <li><a href="page-lockscreen.html" class="">Cheche</a></li>
+              <li><a href="administration/responsab/list/index.php" class="">Cheche</a></li>
+
             </ul>
           </div>
         </li>
@@ -36,9 +38,9 @@
              <i class="icon-submenu lnr lnr-chevron-left"></i></a>
           <div id="subPag" class="collapse ">
             <ul class="nav">
-              <li><a href="page-profile.html" class="">Anrejistre</a></li>
-              <li><a href="page-login.html" class="">Liste</a></li>
-              <li><a href="page-lockscreen.html" class="">Cheche</a></li>
+              <li><a href="surcussale/new/index.php" class="">Anrejistre</a></li>
+              <li><a href="surcussale/list/index.php" class="">Liste</a></li>
+              <li><a href="surcussale/list/index.php" class="">Modifye</a></li>
             </ul>
           </div>
         </li>
