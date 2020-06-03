@@ -35,6 +35,20 @@
 
            }
 
+           public static function inactifAllSurcussale($id){
+              $con=new connexion();
+              $con->executeactualisation("update tblsurcussale set etat=0,date_modifier=NOW() where entreprise_id='$id'");
+              $con->closeconnexion();
+
+    }
+
+              public static function actifAllSurcussale($id){
+                     $con=new connexion();
+                     $con->executeactualisation("update tblsurcussale set etat=1,date_modifier=NOW() where entreprise_id='$id'");
+                     $con->closeconnexion();
+
+              }
+
            public static function getAllSurcussale($id){
                      $con=new connexion();
                      $cont=$con->executerequete("SELECT s.id_surcussale,v.nom_ville,s.ville_id,s.adresse_complete,s.etat from tblsurcussale s inner join tblville v
@@ -42,7 +56,7 @@
                      $con->closeconnexion();
                      return $cont;
            }
-           
+
            public static function getAllSurcussale2($id){
                      $con=new connexion();
                      $cont=$con->executerequete("SELECT s.id_surcussale,v.nom_ville,s.ville_id,s.adresse_complete,s.etat from tblsurcussale s inner join tblville v

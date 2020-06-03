@@ -1,21 +1,21 @@
 <?php
 session_start();
     require_once "../../api/Modele/Mconnexion.class.php";
+    require_once "../../api/Dao/entrepriseDao.class.php";
     require_once "../../api/Dao/surcussaleDao.class.php";
-    require_once "../../api/Dao/postDao.class.php";
 
-    if(isset($_GET['id_surcussale']) && isset($_GET['etat'])){
-      $id=$_GET['id_surcussale'];
-      $etat=$_GET['etat'];
-      if($etat==1){
+    if(isset($_GET['id_entreprise']) && isset($_GET['etat'])){
+      $id=$_GET['id_entreprise'];
+     $etat=$_GET['etat'];
+       if($etat==1){
 
-        surcussaleDao::inactif($id);
-        postDao::inactifAllPost($id);
-      }else if($etat==0){
-        surcussaleDao::actif($id);
-        postDao::actifAllPost($id);
-      }
-    }
+         entrepriseDao::inactif($id);
+         surcussaleDao::inactifAllSurcussale($id);
+       }else if($etat==0){
+        entrepriseDao::actif($id);
+        surcussaleDao::actifAllSurcussale($id);
+       }
+    } 
 
 ?>
 
@@ -51,7 +51,7 @@ session_start();
 		<!-- MAIN -->
 		<div class="main">
 			<!-- MAIN CONTENT -->
-      <h1>Tout Sikisal</h1>
+      <h1>Tout Entrepriz</h1>
       <?php
       if(isset($sikse)){
         echo $sikse;
@@ -68,21 +68,23 @@ session_start();
 
         <table id="user_adr" class="table table-striped table-bordered">
             <tr>
-                  <th>Vil</th>
-                    <th>Adres konpl&egrave;</th>
+                  <th>Non</th>
+                    <th>Vil</th>
+                    <th>Adr&egrave;s konpl&egrave;</th>
             </tr>
 
             <?php
-            $ident="198122317601";
+            $idadmin="158938582588";
 
 
 
-            foreach(surcussaleDao::getAllSurcussale2($ident) as $row):?>
+            foreach(entrepriseDao::getAllEntreprise($idadmin) as $row):?>
               <tr>
-                  <td><?= ucwords($row[1])?></td>
-                  <td><?= ucwords($row[3])?></td>
+                  <td><?= ucfirst($row[1])?></td>
+                  <td><?= $row[2]?></td>
+                  <td><?= ucfirst($row[3])?></td>
                     <td>
-                      <a href="?id_surcussale=<?=$row[0]?>&&etat=<?=$row[4]?>"><input type="submit" value="<?php
+                      <a href="?id_entreprise=<?=$row[0]?>&&etat=<?=$row[4]?>"><input type="submit" value="<?php
                       if($row[4]==1){
                           echo"Pa Disponib";
                         }else if($row[4]==0){
@@ -91,7 +93,7 @@ session_start();
                       ?>" name="btnupdateetat" class="btn btn-secondary btn-sm" data-toggle="modal"/></a>
                     </td>
                     <td>
-                      <a href="../../surcussale/update/index.php?&&id_surcussale=<?=$row[0]?>"><input type="submit" value="Modifye" name="btnmodifye" class="btn btn-secondary btn-sm" data-toggle="modal"/></a>
+                      <a href="../../entreprise/update/index.php?&&id_entreprise=<?=$row[0]?>"><input type="submit" value="Modifye" name="btnmodifye" class="btn btn-secondary btn-sm" data-toggle="modal"/></a>
                     </td>
               </tr>
             <?php endforeach;?>

@@ -5,6 +5,41 @@
       <ul class="nav">
         <li><a href="index.html" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
         <li>
+            <a href="#subP" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i>
+              <span>Entrepriz</span>
+               <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+            <div id="subP" class="collapse ">
+              <ul class="nav">
+                <li><a href="entreprise/new/index.php" class="">Ajoute</a></li>
+              <li><a href="entreprise/list/index.php" class="">Liste</a></li>
+              </ul>
+            </div>
+            </li>
+
+            <li>
+              <a href="#subPag" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i>
+                <span>Sikisal</span>
+                 <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+              <div id="subPag" class="collapse ">
+                <ul class="nav">
+                  <li><a href="surcussale/new/index.php" class="">Anrejistre</a></li>
+                  <li><a href="surcussale/list/index.php" class="">Liste</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="#subPage" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i>
+                <span>Responsab</span>
+                 <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+              <div id="subPage" class="collapse ">
+                <ul class="nav">
+                  <li><a href="administration/responsab/new/index.php" class="">Anrejistre</a></li>
+                  <li><a href="administration/responsab/list/index.php" class="">Liste</a></li>
+
+                </ul>
+              </div>
+            </li>
+        <li>
           <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i>
             <span>Kesye</span>
              <i class="icon-submenu lnr lnr-chevron-left"></i></a>
@@ -12,37 +47,9 @@
             <ul class="nav">
               <li><a href="administration/kesye/new/index.php" class="">Anrejistre</a></li>
               <li><a href="administration/kesye/list/index.php" class="">Liste</a></li>
-              <li><a href="administration/kesye/Modifye/index.php" class="">Modifye</a></li>
             </ul>
           </div>
-          
-        </li>
 
-        <li>
-          <a href="#subPage" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i>
-            <span>Responsab</span>
-             <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-          <div id="subPage" class="collapse ">
-            <ul class="nav">
-              <li><a href="administration/responsab/new/index.php" class="">Anrejistre</a></li>
-              <li><a href="administration/responsab/list/index.php" class="">Liste</a></li>
-              <li><a href="administration/responsab/list/index.php" class="">Cheche</a></li>
-
-            </ul>
-          </div>
-        </li>
-
-        <li>
-          <a href="#subPag" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i>
-            <span>Sikisal</span>
-             <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-          <div id="subPag" class="collapse ">
-            <ul class="nav">
-              <li><a href="surcussale/new/index.php" class="">Anrejistre</a></li>
-              <li><a href="surcussale/list/index.php" class="">Liste</a></li>
-              <li><a href="surcussale/list/index.php" class="">Modifye</a></li>
-            </ul>
-          </div>
         </li>
 
         <li>

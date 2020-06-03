@@ -1,23 +1,24 @@
 <?php
 require_once "../../api/Modele/Mconnexion.class.php";
+require_once "../../api/Dao/entrepriseDao.class.php";
 require_once "../../api/Dao/VilleDao.class.php";
-require_once "../../api/Dao/surcussaleDao.class.php";
-  ini_set('display_errors', 'Off');
-  $ident="198122317601";
-  if(isset($_POST['btnadd']) && isset($_POST['txtville'])  && isset($_POST['txtadressecomp'])){
-    $surcussale=new surcussaleDao();
-    $surcussale->idsurcussale=time()."".rand(1,100);
-    $surcussale->entrepriseid=$ident;
-    $surcussale->villeid=$_POST['txtville'];
-    $surcussale->adressecomplete=$_POST['txtadressecomp'];
-    $surcussale->etat=1;
-    if (isset($surcussale->idsurcussale) && isset($surcussale->entrepriseid) && isset($surcussale->villeid) && isset($surcussale->adressecomplete) && isset($surcussale->etat)){
-      surcussaleDao::addSurcussale($surcussale);
-      $sikse="sikisal la anrejistre";
-    }
-  }
-?>
+require_once "../../api/Modele/Mentreprise.class.php";
+ini_set('display_errors', 'Off');
+$entreprise=new entrepriseDao();
+$ident=time()."".rand(1,100);
+$entreprise->ident=$ident;
+$entreprise->adminid="158938582588";
+$entreprise->nom=$_POST['txtnomentreprise'];
+$entreprise->logo="";
+$entreprise->villeid=$_POST['txtville'];
+$entreprise->adressecomp=$_POST['txtadressecomp'];
+if(isset($entreprise->ident) && isset($entreprise->adminid) && isset($entreprise->nom) && isset($entreprise->logo) && isset($entreprise->villeid) && isset($entreprise->adressecomp)){
+  entrepriseDao::add($entreprise);
+  $sikse="antrepriz la anrejistre avek sikse.";
+  
+}
 
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -51,7 +52,7 @@ require_once "../../api/Dao/surcussaleDao.class.php";
 		<div class="main">
 			<!-- MAIN CONTENT -->
       <div class="main-content">
-        <h1>Anrejistre Sikisal</h1>
+        <h1>Ajoute entrepriz</h1>
         <?php
         if(isset($sikse)){
           echo $sikse;
@@ -66,6 +67,7 @@ require_once "../../api/Dao/surcussaleDao.class.php";
         ?>
 
         <form action="" method="post" class="form-inline">
+            <input type="text" name="txtnomentreprise" class="form-control" value="<?php if($mesaj){ echo $_POST['txtnomentreprise'];}?>"  required placeholder="Non entrepriz">
           <select id="txtville" name="txtville" class="form-control">
               <?php foreach(VilleDao::GetVille() as $li):
                 echo "<option value='$li[0]'>$li[2]</option>"; endforeach;?>

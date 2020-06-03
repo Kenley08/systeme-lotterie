@@ -98,9 +98,9 @@ if(isset($_GET['id_admin']) && isset($_GET['etat']) && isset($_GET['id_post'])){
                       <td>
                         <a href="?etat=<?=$row[4]?>&&id_admin=<?=$row[5]?>&&id_post=<?=$row[0]?>"><input type="submit" value="<?php
                         if($row[4]==1){
-                            echo"bloquer";
+                            echo"Bloke";
                           }else if($row[4]==0){
-                              echo"Debloquer";
+                              echo"Debloke";
                             }
                         ?>" name="btnblock" class="btn btn-secondary  btn-sm" data-toggle="modal"/></a>
 
@@ -108,7 +108,7 @@ if(isset($_GET['id_admin']) && isset($_GET['etat']) && isset($_GET['id_post'])){
                       </td>
 
                       <td>
-                        <a href="?"><input type="submit" value="Modifye" name="btnmodifye" class="btn btn-secondary  btn-sm" data-toggle="modal"/></a>
+                        <a href="../../kesye/update/index.php?&&id_admin=<?=$row[5]?>"><input type="submit" value="Modifye" name="btnmodifye" class="btn btn-secondary  btn-sm" data-toggle="modal"/></a>
 
 
                       </td>
@@ -128,10 +128,13 @@ if(isset($_GET['id_admin']) && isset($_GET['etat']) && isset($_GET['id_post'])){
                 if(isset($_POST['btnrechercher']) && $liy){
                   ?>
                   <tr>
-                    <td><?= $liy[0] ?></td>
-                    <td><?= $liy[1] ?></td>
-                    <td><?= $liy[2] ?></td>
-                    <td><?=ucwords($liy[3])?></td>
+                  <td><?= $liy[0] ?></td>
+                      <td><?= $liy[1] ?></td>
+                      <td><?= $liy[6] ?></td>
+                      <td><?= $liy[7] ?></td>
+                      <td><?= $liy[8] ?></td>
+                      <td><?= $liy[2] ?></td>
+                      <td><?= ucwords($liy[3])?></td>
                     <td>
                       <a href="?etat=<?=$liy[4]?>&&id_admin=<?=$liy[5]?>&&id_post=<?=$liy[0]?>"><input type="submit" value="<?php
                       if($liy[4]==1){
@@ -141,9 +144,13 @@ if(isset($_GET['id_admin']) && isset($_GET['etat']) && isset($_GET['id_post'])){
                           }
                       ?>" name="btnblock" class="btn btn-secondary  btn-sm" data-toggle="modal"/></a>
                     </td>
+                    <td>
+                      <td>
+                        <a href="../../kesye/update/index.php?&&id_admin=<?=$row[5]?>"><input type="submit" value="Modifye" name="btnmodifye" class="btn btn-secondary  btn-sm" data-toggle="modal"/></a>
 
+                      </td>
 
-
+                  </td>
 
 
                   </tr>

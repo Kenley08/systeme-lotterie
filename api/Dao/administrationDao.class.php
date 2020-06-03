@@ -21,7 +21,7 @@
      public static function getadminbyid($id){
                $con=new connexion();
                $cont=$con->executerequete("SELECT a.id_admin,a.nom_complet,a.pin,a.email,a.telephone,a.adresse_complete,t.type_admin,a.type_admin_id,a.ville_id FROM tbladministration a
-                INNER join tbltypeadministration t on a.type_admin_id=t.id_type_admin WHERE id_admin='$id'");
+                INNER join tbltypeadministration t on a.type_admin_id=t.id_type_admin WHERE a.id_admin='$id'");
                $con->closeconnexion();
                return $cont[0];
 

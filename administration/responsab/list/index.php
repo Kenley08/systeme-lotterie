@@ -48,7 +48,7 @@
 		<!-- MAIN -->
 		<div class="main">
 			<!-- MAIN CONTENT -->
-      <h1>Tout kesye</h1>
+      <h1>Tout responsab</h1>
       <?php
       if(isset($sikse)){
         echo $sikse;
@@ -62,8 +62,8 @@
 
       ?>
       <form action="" method="post" class="form-inline">
-        <input type="text" name="txtnom" class="form-control"  value="<?php if($mesaj){ echo $_POST['txtnom'];}?>"  placeholder="Ex:Fleurine Kenley">
-        <input type="submit" name="btnrechercher" value="Rechercher" class="btn btn-success">
+        <input type="text" name="txtnom" class="form-control"  value="<?php if($mesaj){ echo $_POST['txtnom'];}?>"  placeholder="Non Konpl&egrave;">
+        <input type="submit" name="btnrechercher" value="Ch&egrave;che" class="btn btn-success">
 
       </form>
         </br>  </br>
@@ -90,14 +90,18 @@
                       <td>
                         <a href="?etat=<?=$row[4]?>&&id_admin=<?=$row[5]?>"><input type="submit" value="<?php
                         if($row[4]==1){
-                            echo"bloquer";
+                            echo"Bloke";
                           }else if($row[4]==0){
-                              echo"Debloquer";
+                              echo"Debloke";
                             }
                         ?>" name="btnblock" class="btn btn-secondary  btn-sm" data-toggle="modal"/></a>
                       </td>
-                  </tr>
 
+                      <td>
+                        <a href="../../responsab/update/index.php?&&id_admin=<?=$row[5]?>"><input type="submit" value="Modifye" name="btnmodifye" class="btn btn-secondary  btn-sm" data-toggle="modal"/></a>
+
+                      </td>
+                      </tr>
                     <?php
                   endforeach;
                 ?>
@@ -118,18 +122,21 @@
                     <td>
                       <a href="?etat=<?=$liy[4]?>&&id_admin=<?=$liy[5]?>"><input type="submit" value="<?php
                       if($liy[4]==1){
-                          echo"bloquer";
+                          echo"Bloke";
                         }else if($liy[4]==0){
-                            echo"Debloquer";
+                            echo"Debloke";
                           }
                       ?>" name="btnblock" class="btn btn-secondary  btn-sm" data-toggle="modal"/></a>
                     </td>
+                    <td>
+                      <a href="../../responsab/update/index.php?&&id_admin=<?=$liy[5]?>"><input type="submit" value="Modifye" name="btnmodifye" class="btn btn-secondary  btn-sm" data-toggle="modal"/></a>
 
+                    </td>
                   </tr>
                   <?php
                 }else{
-                  echo $mesaj="Nou pa arive jwenn administrate sa.";
-                }
+                    echo $mesaj="Nou pa arive jwenn administrate sa.";
+                  }
                 }
                 ?>
 

@@ -149,15 +149,15 @@ if(isset($_POST['btnanrejistre']) && isset($_POST['txtnom']) && isset($_POST['tx
 					?>
 
 					<form action="" method="post" class="form-inline">
-								<input type="text" name="txtnom" class="form-control" value="<?php if(($mesaj)||($_POST['txttypeadmin']==3) || isset($_GET['id_surcussale'])){ echo $_SESSION['nom_complet'];}?>" required  placeholder="Ex:Fleurine Kenley">
+								<input type="text" name="txtnom" class="form-control" value="<?php if(($mesaj)||($_POST['txttypeadmin']==3) || isset($_GET['id_surcussale'])){ echo $_SESSION['nom_complet'];}?>" required  placeholder="Non Konpl&egrave;">
 									<select  name="txttypeadmin" class="form-control">
                     <option value='1'>Admin</option>
                     <option value='2'> Sip&egrave; Admin</option>
                     <option value='3'>Sip&egrave;viz&egrave;</option>
 									</select>
-								<input type="text" name="txtpin" class="form-control"  value="<?php if(($mesaj) || ($_POST['txttypeadmin']==3) || isset($_GET['id_surcussale'])){ echo $_SESSION['pin'];}?>" required placeholder="Ex:0089">
-								<input type="email" name="txtemail" class="form-control"  value="<?php if(($mesaj)||($_POST['txttypeadmin']==3)  || isset($_GET['id_surcussale'])){ echo $_SESSION['email'];}?>" required placeholder="Ex:fleurinekenley@gmail.com">
-									<input type="text" name="txttelephone" class="form-control"  value="<?php if(($mesaj)||($_POST['txttypeadmin']==3)  || isset($_GET['id_surcussale'])){ echo $_SESSION['telephone'];}?>" required placeholder="Ex:47663774">
+								<input type="text" name="txtpin" class="form-control"  value="<?php if(($mesaj) || ($_POST['txttypeadmin']==3) || isset($_GET['id_surcussale'])){ echo $_SESSION['pin'];}?>" required placeholder="Pin">
+								<input type="email" name="txtemail" class="form-control"  value="<?php if(($mesaj)||($_POST['txttypeadmin']==3)  || isset($_GET['id_surcussale'])){ echo $_SESSION['email'];}?>" required placeholder="Imel">
+									<input type="text" name="txttelephone" class="form-control"  value="<?php if(($mesaj)||($_POST['txttypeadmin']==3)  || isset($_GET['id_surcussale'])){ echo $_SESSION['telephone'];}?>" required placeholder="Telef&ograve;n">
 									<select id="txtville" name="txtville" class="form-control">
                     <?php foreach(VilleDao::GetVille() as $li):
                       if(($_POST['txttypeadmin']==3) || isset($_GET['id_surcussale']) ||($mesaj)){
@@ -174,7 +174,8 @@ if(isset($_POST['btnanrejistre']) && isset($_POST['txtnom']) && isset($_POST['tx
                        endforeach;?>
 
 									</select>
-									<input type="text" name="txtadressecomp" class="form-control" value="<?php if(($mesaj)||($_POST['txttypeadmin']==3) || isset($_GET['id_surcussale'])){ echo $_SESSION['adresse_complete'];}?>"  required placeholder="tabarre 36,en face de l'univers market">
+                  
+									<input type="text" name="txtadressecomp" class="form-control" value="<?php if(($mesaj)||($_POST['txttypeadmin']==3) || isset($_GET['id_surcussale'])){ echo $_SESSION['adresse_complete'];}?>"  required placeholder="Adres kopl&egrave;">
 
 							 <input type="submit" name="btnanrejistre" value="Anrejistre" class="btn btn-success">
 

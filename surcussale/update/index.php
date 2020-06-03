@@ -2,22 +2,22 @@
 require_once "../../api/Modele/Mconnexion.class.php";
 require_once "../../api/Dao/VilleDao.class.php";
 require_once "../../api/Dao/surcussaleDao.class.php";
-  ini_set('display_errors', 'Off');
-  $ident="198122317601";
-  if(isset($_POST['btnadd']) && isset($_POST['txtville'])  && isset($_POST['txtadressecomp'])){
+require_once "../../api/Modele/Msurcussale.class.php";
+//  ini_set('display_errors', 'Off');
+if(isset($_GET['id_surcussale'])){
+    $id=$_GET['id_surcussale'];
+    $ligne=surcussaleDao::getsurcussalebyid($id);
+}
+if(isset($_POST['btnmodifier']) && isset($_POST['txtville'])  && isset($_POST['txtadressecomp'])){
     $surcussale=new surcussaleDao();
-    $surcussale->idsurcussale=time()."".rand(1,100);
-    $surcussale->entrepriseid=$ident;
+    $surcussale->idsurcussale=$id;
     $surcussale->villeid=$_POST['txtville'];
     $surcussale->adressecomplete=$_POST['txtadressecomp'];
-    $surcussale->etat=1;
-    if (isset($surcussale->idsurcussale) && isset($surcussale->entrepriseid) && isset($surcussale->villeid) && isset($surcussale->adressecomplete) && isset($surcussale->etat)){
-      surcussaleDao::addSurcussale($surcussale);
-      $sikse="sikisal la anrejistre";
-    }
+    surcussaleDao::updateSurcussale($surcussale);
+    $sikse="sikisal la modifye avek sikse.";
   }
-?>
 
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -50,30 +50,36 @@ require_once "../../api/Dao/surcussaleDao.class.php";
 		<!-- MAIN -->
 		<div class="main">
 			<!-- MAIN CONTENT -->
-      <div class="main-content">
-        <h1>Anrejistre Sikisal</h1>
-        <?php
-        if(isset($sikse)){
-          echo $sikse;
-        }else if(isset($mesaj)){
-            echo $mesaj;
-        }else{
-          $mesaj="";
-          $sikse="";
-        }
+      <h1>Modifye sikisal</h1>
+      <?php
+      if(isset($sikse)){
+        echo $sikse;
+      }else if(isset($mesaj)){
+          echo $mesaj;
+      }else{
+        $mesaj="";
+        $sikse="";
+      }
 
 
-        ?>
+      ?>
 
-        <form action="" method="post" class="form-inline">
-          <select id="txtville" name="txtville" class="form-control">
-              <?php foreach(VilleDao::GetVille() as $li):
-                echo "<option value='$li[0]'>$li[2]</option>"; endforeach;?>
-          </select>
-                <input type="text" name="txtadressecomp" class="form-control" value="<?php if($mesaj){ echo $_POST['txtadressecomp'];}?>"  required placeholder="Adres konpl&egrave;">
-            <input type="submit" name="btnadd" value="Anrejistre" class="btn btn-success">
+      <form action="" method="post" class="form-inline">
+        <select  name="txtville" class="form-control">
+          <?php foreach(VilleDao::GetVille() as $l):
+            if($l[0] ==$ligne[2]){
+              echo "<option selected='selected' value='$l[0]'>$l[2]</option>";
+             }
+             else{
+                 echo "<option value='$l[0]'>$l[2]</option>";
+             }
+          endforeach;?>
+        </select>
+              <input type="text" name="txtadressecomp" class="form-control" value="<?php if($ligne){ echo $ligne[3];}?>"  required placeholder="tabarre 36,en face de l'univers market">
+          <input type="submit" name="btnmodifier" value="Modifier" class="btn btn-success">
 
-        </form>
+      </form>
+
 			</div>
 			<!-- END MAIN CONTENT -->
 		</div>

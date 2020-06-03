@@ -35,14 +35,14 @@ class postDao{
             inner join tbladministration a
             INNER join tblsurcussale s
             INNER JOIN tblville v
-            on p.admin_id=a.id_admin  AND p.surcussale_id=s.id_surcussale and v.id_ville=s.ville_id where a.nom_complet='$nom'");
+            on p.admin_id=a.id_admin  AND p.surcussale_id=s.id_surcussale and v.id_ville=s.ville_id where a.nom_complet='$nom' ");
             $con->closeconnexion();
             return $cont[0];
   }
 
   public static function Getkesye($nom){
             $con=new connexion();
-            $cont=$con->executerequete("SELECT p.id_post,a.nom_complet,v.nom_ville, s.adresse_complete,a.etat,a.id_admin FROM tblpost p
+            $cont=$con->executerequete("SELECT p.id_post,a.nom_complet,v.nom_ville, s.adresse_complete,a.etat,a.id_admin,a.email,a.telephone,a.adresse_complete FROM tblpost p
             inner join tbladministration a
             INNER join tblsurcussale s
             INNER JOIN tblville v

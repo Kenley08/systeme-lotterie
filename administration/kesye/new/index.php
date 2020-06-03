@@ -54,13 +54,13 @@ if(isset($_POST['btnanrejistre']) && isset($_POST['txtnom']) && isset($_POST['tx
                   if($row[0]!=$email){
                      if($row[1]!=$tel){
                   //nou teste si id_surcussale la pase pa get
-                          if(isset($_GET['id_surcussale'])){
+                        //  if(isset($_GET['id_surcussale'])){
                                   $idsur=$_GET['id_surcussale'];
                                   $post=new postDao();
                                   $idpost=time()."".rand(1,100);
                                   $post->idpost=$idpost;
                                    $post->adminid=$admin->idadmin;
-                                  $post->surcussaleid=$idsur;
+                                  $post->surcussaleid=$_POST['txtsurcussale'];
                                   $post->etat=1;
 
                                 //  $admin->nomcomplet=$_SESSION['nom_complet'];
@@ -71,9 +71,9 @@ if(isset($_POST['btnanrejistre']) && isset($_POST['txtnom']) && isset($_POST['tx
                                     postDao::addPost($post);
                                   $sikse="insesyon an fet.";
                                 // header("location:./index.php");
-                          }else{
+                        //  }else{
                             $mesaj="Ou poko chwazi yon sikisal pou w ka mete kesye a.";
-                          }
+                        //  }
 
 
 
@@ -180,46 +180,20 @@ if(isset($_POST['btnanrejistre']) && isset($_POST['txtnom']) && isset($_POST['tx
 												 endforeach;?>
 
 									</select>
+
+                  <select id="txtsurcussale" name="txtsurcussale" class="form-control">
+                    <?php foreach(surcussaleDao::getAllSurcussale($ident) as $l):
+                          echo "<option value='$l[0]'>$l[1],".$l[3]."</option>";
+                       endforeach;?>
+
+									</select>
+
 									<input type="text" name="txtadressecomp" class="form-control" value="<?php if(($mesaj)||($_POST['txttypeadmin']==3) || isset($_GET['id_surcussale'])){ echo $_SESSION['adresse_complete'];}?>"  required placeholder="tabarre 36,en face de l'univers market">
 
 							 <input type="submit" name="btnanrejistre" value="Anrejistre" class="btn btn-success">
 
 
 					</form>
-
-					<table id="user_adr" class="table table-striped table-bordered">
-							<tr>
-								<th>ID SURCUSSALE</th>
-										<th>Ville</th>
-											<th>ADRESSE COMPLETE</th>
-													<th>OPTION</th>
-							</tr>
-
-							<?php
-								if (isset($_SESSION['entreprise_id'])){
-									$_SESSION['entreprise_id']="198122317601";
-									$ident=$_SESSION['entreprise_id'];
-								}
-							foreach(surcussaleDao::getAllSurcussale($ident) as $row):?>
-								<tr>
-										<td><?=$row[0]?></td>
-										<td><?= ucwords($row[1])?></td>
-										<td><?= ucwords($row[3])?></td>
-
-											<td>
-											<a href="?id_surcussale=<?=$row[0]?>&&etat=<?=$row[4]?>"><input type="submit" value="Choisir" name="btnchoisir" class="btn btn-secondary btn-sm" data-toggle="modal"/></a>
-											</td>
-
-
-								</tr>
-
-
-							<?php endforeach;?>
-					</table>
-
-
-
-
 			</div>
 			<!-- END MAIN CONTENT -->
 		</div>
