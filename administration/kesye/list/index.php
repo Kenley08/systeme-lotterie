@@ -91,7 +91,7 @@ if(isset($_GET['id_admin']) && isset($_GET['etat']) && isset($_GET['id_post'])){
                       <td><?= $row[1] ?></td>
                       <td><?= $row[6] ?></td>
                       <td><?= $row[7] ?></td>
-                      <td><?= $row[8] ?></td>
+                      <td><?= ucfirst($row[8]) ?></td>
                       <td><?= $row[2] ?></td>
                       <td><?= ucwords($row[3])?></td>
 

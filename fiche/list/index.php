@@ -1,23 +1,71 @@
 <?php
     require_once "../../api/Modele/Mconnexion.class.php";
     require_once "../../api/Dao/ficheDao.class.php";
-
+    require_once "../../api/Dao/surcussaleDao.class.php";
+    require_once "../../api/Dao/villeDao.class.php";
+    $ident='198122317601';
+    
 ?>
 
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>Get fiche by Date</title>
-  <meta charset="utf-8"/>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-  <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+	<title>Profile | Klorofil - Free Bootstrap Dashboard Template</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!-- VENDOR CSS -->
+	<link rel="stylesheet" href="../../assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../../assets/vendor/linearicons/style.css">
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" href="../../assets/css/main.css">
+	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+	<link rel="stylesheet" href="../../assets/css/demo.css">
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	<!-- ICONS -->
+	<link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicon.png">
+</head>
 
-  <head>
-  <body>
+<body>
+	<!-- WRAPPER -->
+	<div id="wrapper">
 
-      <div class="container">
-            <form action="?" method="post">
+	<?php
+	require_once '../../file/header.inc';
+	require_once '../../file/menu.inc';?>
+		<!-- MAIN -->
+		<div class="main">
+			<!-- MAIN CONTENT -->
+      <h1>Tout fich</h1>
+      <?php
+      if(isset($sikse)){
+        echo $sikse;
+      }else if(isset($mesaj)){
+          echo $mesaj;
+      }else{
+        $mesaj="";
+        $sikse="";
+      }
+      ?>
+
+<form action="" method="post" class="form-inline">
+<select id="txtsurcussale" name="txtsurcussale" class="form-control">
+<option selected='selected' value='tout'>Tout</option>
+                    <?php foreach(surcussaleDao::getAllSurcussale($ident)as $l):
+                          echo "<option value='$l[0]'>$l[1],".$l[3]."</option>";
+                         
+                       endforeach;
+
+                       ?>
+
+
+
+									</select>
+</form>
+<!-- <form action="?" method="post">
               <table>
                 <tbody>
                   <tr>
@@ -54,24 +102,22 @@
 
               </table>
             </form>
+ -->
 
             <table id="user_adr" class="table table-striped table-bordered">
                 <tr>
-                  <th>ID FICHE</th>
-                    <th>PRIX TOTAL</th>
-                      <th>ETAT</th>
-                        <th>PAYE</th>
-                          <th>DATE AJOUT</th>
-                            <th>CAISSIER</th>
+                  <th>ID Fich</th>
+                    <th>Pri total</th>
+                      <th>Eta</th>
+                        <th>Peye</th>
+                          <th>Dat anrejistre</th>
+                            <th>kesye</th>
                 </tr>
                 <tbody>
                   <?php
-                  if(isset($_POST['btnrechecher'])){
-                   $idsur='348902310239';
-                   $ident='198122317601';
-                    $debut = date("y-m-d",strtotime($_POST['txtdebut']));
-                    $fin= date("y-m-d",strtotime($_POST['txtfin']));
-                    foreach (ficheDao::GetficheByDate($debut,$fin,$idsur,$ident) as $row):
+                  if(!isset($_POST['txtsurcussale'])){
+                  // $idsur='348902310239';
+                    foreach (ficheDao::GetAllFiche($ident) as $row):
                     //echo $row[0]."</br>";
                   ?>
                   <tr>
@@ -93,11 +139,26 @@
                   <?php
                 endforeach;
           }
+          /* else{
+            foreach (ficheDao::GetAllFiche($ident) as $row):
+          } */
                   ?>
                 </tbody>
             </table>
-      </div>
-
-  </body>
+        
+			</div>
+			<!-- END MAIN CONTENT -->
+		</div>
+		<!-- END MAIN -->
+		<div class="clearfix"></div>
+	<?php require_once '../../file/footer.inc';?>
+	</div>
+	<!-- END WRAPPER -->
+	<!-- Javascript -->
+	<script src="../../assets/vendor/jquery/jquery.min.js"></script>
+	<script src="../../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="../../assets/scripts/klorofil-common.js"></script>
+</body>
 
 </html>

@@ -74,11 +74,11 @@ session_start();
             </tr>
 
             <?php
-            $idadmin="158938582588";
+           // $idadmin="158938582588";
+              $iden="198122317601";
 
 
-
-            foreach(entrepriseDao::getAllEntreprise($idadmin) as $row):?>
+              $row=entrepriseDao::getEntrepriseByid($iden);?>
               <tr>
                   <td><?= ucfirst($row[1])?></td>
                   <td><?= $row[2]?></td>
@@ -96,7 +96,7 @@ session_start();
                       <a href="../../entreprise/update/index.php?&&id_entreprise=<?=$row[0]?>"><input type="submit" value="Modifye" name="btnmodifye" class="btn btn-secondary btn-sm" data-toggle="modal"/></a>
                     </td>
               </tr>
-            <?php endforeach;?>
+            <?php// endforeach;?>
         </table>
 
 			</div>

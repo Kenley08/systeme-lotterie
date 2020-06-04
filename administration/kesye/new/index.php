@@ -152,7 +152,7 @@ if(isset($_POST['btnanrejistre']) && isset($_POST['txtnom']) && isset($_POST['tx
 						$sikse="";
 					}
 
-						$ident="198122317601";
+					  
 
 					?>
 
@@ -182,7 +182,8 @@ if(isset($_POST['btnanrejistre']) && isset($_POST['txtnom']) && isset($_POST['tx
 									</select>
 
                   <select id="txtsurcussale" name="txtsurcussale" class="form-control">
-                    <?php foreach(surcussaleDao::getAllSurcussale($ident) as $l):
+                    <?php 	$ident="198122317601";
+                     foreach(surcussaleDao::getAllSurcussale($ident) as $l):
                           echo "<option value='$l[0]'>$l[1],".$l[3]."</option>";
                        endforeach;?>
 

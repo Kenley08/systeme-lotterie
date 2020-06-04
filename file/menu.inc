@@ -58,7 +58,7 @@
              <i class="icon-submenu lnr lnr-chevron-left"></i></a>
           <div id="subPa" class="collapse ">
             <ul class="nav">
-              <li><a href="fiche/list/index.php" class="">list</a></li>
+              <li><a href="fiche/list/index.php" class="">liste</a></li>
 
             </ul>
           </div>
