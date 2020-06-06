@@ -40,5 +40,15 @@ public static function GetFicheBySurcusale($ident,$idsur){
 }
 
 
+public static function GetAllFicheByDate($debut,$fin,$ident){
+  $con=new connexion();
+  $cont=$con->executerequete("SELECT f.id_fiche,f.prix_total,f.etat,f.paye,f.date_ajouT,a.nom_complet FROM tblfiche f INNER JOIN tbladministration a
+    INNER JOIN tblpost p INNER JOIN tblsurcussale s INNER JOIN tblentreprise e
+    on f.admin_id=a.id_admin and s.id_surcussale=p.surcussale_id and e.id_entreprise=s.entreprise_id and p.admin_id=a.id_admin
+    WHERE f.date_ajout BETWEEN CAST('$debut' AS DATE) AND CAST('$fin' AS DATE)  and e.id_entreprise='$ident'");
+  $con->closeconnexion();
+  return $cont;
+}
+
 }
 ?>
