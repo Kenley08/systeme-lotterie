@@ -15,13 +15,13 @@ if(isset($_POST['btnanrejistre']) && isset($_POST['txtnom']) && isset($_POST['tx
 
    //n ap kreye yon instans de obje administrationDao a
     $admin=new administration();
-
     //nou afekte l ak atribi l yo
     $idadmin=time()."".rand(1,100);
+    $pin=rand(1, 10000)."";
     $admin->idadmin=$idadmin;
     $admin->typeadminid=$_POST['txttypeadmin'];
     $admin->nomcomplet=ucwords($_POST['txtnom']);
-    $admin->pin=$_POST['txtpin'];
+    $admin->pin=$pin;
     $admin->email=$_POST['txtemail'];
     $admin->telephone=$_POST['txttelephone'];
     $admin->villeid=$_POST['txtville'];
@@ -135,8 +135,8 @@ if(isset($_POST['btnanrejistre']) && isset($_POST['txtnom']) && isset($_POST['tx
 	<div id="wrapper">
 
 	<?php
-	require_once '../../../file/header.inc';
-	require_once '../../../file/menu.inc';?>
+require_once '../../../file/header.inc';
+require_once '../../../file/menu.inc';?>
 		<!-- MAIN -->
 		<div class="main">
 			<!-- MAIN CONTENT -->
@@ -161,7 +161,8 @@ if(isset($_POST['btnanrejistre']) && isset($_POST['txtnom']) && isset($_POST['tx
 									<select  name="txttypeadmin" class="form-control">
 											<option value='3'>Kesye</option>
 									</select>
-								<input type="text" name="txtpin" class="form-control"  value="<?php if(($mesaj) || ($_POST['txttypeadmin']==3) || isset($_GET['id_surcussale'])){ echo $_SESSION['pin'];}?>" required placeholder="Ex:0089">
+                  <input type="hidden" name="txtpin"  class="form-control"  value="<?php if(($mesaj) || ($_POST['txttypeadmin']==3) || isset($_GET['id_surcussale'])){ echo $_SESSION['pin'];}?>" required placeholder="Ex:0089">
+
 								<input type="email" name="txtemail" class="form-control"  value="<?php if(($mesaj)||($_POST['txttypeadmin']==3)  || isset($_GET['id_surcussale'])){ echo $_SESSION['email'];}?>" required placeholder="Ex:fleurinekenley@gmail.com">
 									<input type="text" name="txttelephone" class="form-control"  value="<?php if(($mesaj)||($_POST['txttypeadmin']==3)  || isset($_GET['id_surcussale'])){ echo $_SESSION['telephone'];}?>" required placeholder="Ex:47663774">
 									<select id="txtville" name="txtville" class="form-control">

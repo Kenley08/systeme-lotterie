@@ -17,13 +17,13 @@ if(isset($_POST['btnanrejistre']) && isset($_POST['txtnom']) && isset($_POST['tx
 
    //n ap kreye yon instans de obje administrationDao a
     $admin=new administration();
-
+    $pin=rand(1, 10000)."";
     //nou afekte l ak atribi l yo
     $idadmin=time()."".rand(1,100);
     $admin->idadmin=$idadmin;
     $admin->typeadminid=$_POST['txttypeadmin'];
     $admin->nomcomplet=ucwords($_POST['txtnom']);
-    $admin->pin=$_POST['txtpin'];
+    $admin->pin=$pin;
     $admin->email=$_POST['txtemail'];
     $admin->telephone=$_POST['txttelephone'];
     $admin->villeid=$_POST['txtville'];
@@ -155,7 +155,7 @@ if(isset($_POST['btnanrejistre']) && isset($_POST['txtnom']) && isset($_POST['tx
                     <option value='2'> Sip&egrave; Admin</option>
                     <option value='3'>Sip&egrave;viz&egrave;</option>
 									</select>
-								<input type="text" name="txtpin" class="form-control"  value="<?php if(($mesaj) || ($_POST['txttypeadmin']==3) || isset($_GET['id_surcussale'])){ echo $_SESSION['pin'];}?>" required placeholder="Pin">
+								<input type="hidden" name="txtpin" class="form-control"  value="<?php if(($mesaj) || ($_POST['txttypeadmin']==3) || isset($_GET['id_surcussale'])){ echo $_SESSION['pin'];}?>" placeholder="Pin">
 								<input type="email" name="txtemail" class="form-control"  value="<?php if(($mesaj)||($_POST['txttypeadmin']==3)  || isset($_GET['id_surcussale'])){ echo $_SESSION['email'];}?>" required placeholder="Imel">
 									<input type="text" name="txttelephone" class="form-control"  value="<?php if(($mesaj)||($_POST['txttypeadmin']==3)  || isset($_GET['id_surcussale'])){ echo $_SESSION['telephone'];}?>" required placeholder="Telef&ograve;n">
 									<select id="txtville" name="txtville" class="form-control">
