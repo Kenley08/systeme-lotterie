@@ -18,7 +18,7 @@ s<?php
         $this->adressecomp="";
         $this->etat="";
         $this->dateaj="";
-        $this->dateaj="";
+        $this->dateup="";
       }
 
 

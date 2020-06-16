@@ -6,10 +6,16 @@ require_once "../../api/Dao/bouleDao.class.php";
 require_once "../../api/Dao/typebouleDao.class.php";
 require_once "../../api/Dao/ficheDao.class.php";
 require_once "../../api/Modele/Mfiche.class.php";
+require_once "../../api/Dao/configtypebouleDao.class.php";
   ini_set('display_errors', 'Off');
+  $ident="198122317601";
+
   $_SESSION['admin_id']='23812237695';
+
   //$_SESSION['fiche_id']=null;
   if(isset($_POST['btnajouterboule']) && isset($_POST['txttypeboule'])  && isset($_POST['txtprix'])){
+      //nou pral fe yon boucle pou nou kare 
+   $mesaj="";
     $boule=new bouleDao();
     $ficheid="";
     //n ap teste si id ki jerere a diferan ak sak ki te nan session a deja nan premier random la ki te fet nan variable fichierid a
@@ -48,12 +54,30 @@ require_once "../../api/Modele/Mfiche.class.php";
     $boule->typebouleid=$_POST['txttypeboule'];
     $boule->boule=$_POST['txtboule'];
     $boule->prix=$_POST['txtprix'];
-
     if (isset($boule->idboule) && isset($boule->typebouleid) && isset($boule->prix) && isset($boule->ficheid)){
-      bouleDao::addBoule($boule);
-      $sikse="boule ajoute";
+    
+      $prix=$_POST['txtprix'];
+      //nou fe yon rechech apati de id identreprise ak type boul ki seleksyone a pou nou ka jwenn type boule ki seleksyone a
+      $ligne=configTypeBouleDao::select($ident);
+      foreach(configTypeBouleDao::getConfigTypeBoule($ident) as $row):
+        if($ligne[0]==$row[4]){
+          //mwen pral fe test sou pri boule ke kesye a antre a avan nou ajoute boul la antre nan base de donnees a
+              if($row[2]>$prix){
+                 $mesaj="tip boul sa dwe jwe pou pi piti ".$row[2]." Goud";
+              }else if($row[3]<$prix){
+                 $mesaj="tip boul sa dwe jwe pou pi plis".$row[2]."Goud";
+              }else{
+                bouleDao::addBoule($boule);
+                $sikse="boule ajoute";
+              }
+      
+        }
+     endforeach;
 
+
+     
     }
+   
    }
   //else{
   //   $mesaj="boul la pa pa arive anrejistre.";
@@ -117,11 +141,11 @@ require_once "../../api/Modele/Mfiche.class.php";
           <form action="" method="post" class="form-inline">
               <input type="text" name="txtficheid" placeholder="id:0809463746" value="<?php echo $_SESSION['fiche_id'];?>"class="form-control">
             <select  name="txttypeboule" class="form-control">
-                <?php foreach(typebouleDao::getTypeBoule() as $li):
+                <?php foreach(configTypeBouleDao::getConfigTypeBoule($ident) as $li):
                   echo "<option value='$li[0]'>$li[1]</option>"; endforeach;?>
             </select>
               <input type="text" name="txtboule" class="form-control" value="<?php if($mesaj){ echo $_POST['txtboule'];}?>"   placeholder="Boule">
-            <input type="text" name="txtprix" class="form-control" value="<?php if($mesaj){ echo $_POST['txtprix'];}?>"   placeholder="Ex:10 gdes">
+            <input type="number" name="txtprix" class="form-control" value="<?php if($mesaj){ echo $_POST['txtprix'];}?>"   placeholder="Ex:10 gdes">
 
            <input type="submit" name="btnajouterboule" value="ajouter" class="btn btn-success">
             <input type="submit" name="btnsotirfiche" value="Sortir Fiche" class="btn btn-success">

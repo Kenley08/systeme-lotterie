@@ -65,7 +65,18 @@
         </li>
 
         <li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>Rapo</span></a></li>
-        <li><a href="panels.html" class=""><i class="lnr lnr-cog"></i> <span>Konfigiration</span></a></li>
+
+      <li>
+          <a href="#sub" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i>
+            <span>Konfigiration</span>
+             <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+          <div id="sub" class="collapse ">
+            <ul class="nav">
+              <li><a href="configuration/typeboule/index.php" class="">Type boule</a></li>
+            </ul>
+          </div>
+        </li>
+
 
       </ul>
     </nav>

@@ -3,7 +3,7 @@ session_start();
 require_once "../../../api/Modele/Mconnexion.class.php";
 require_once "../../../api/Dao/postDao.class.php";
 require_once "../../../api/Dao/administrationDao.class.php";
-ini_set('display_errors', 'Off');
+//ini_set('display_errors', 'Off');
 if(isset($_GET['id_admin']) && isset($_GET['etat']) && isset($_GET['id_post'])){
   $id=$_GET['id_admin'];
   $idpost=$_GET['id_post'];

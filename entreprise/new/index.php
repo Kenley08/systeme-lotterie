@@ -3,7 +3,11 @@ require_once "../../api/Modele/Mconnexion.class.php";
 require_once "../../api/Dao/entrepriseDao.class.php";
 require_once "../../api/Dao/VilleDao.class.php";
 require_once "../../api/Modele/Mentreprise.class.php";
+require_once "../../api/Dao/configtypebouleDao.class.php";
+require_once "../../api/Modele/Mconfigtypeboule.class.php";
 ini_set('display_errors', 'Off');
+$ident="198122317601";
+
 $entreprise=new entrepriseDao();
 $ident=time()."".rand(1,100);
 $entreprise->ident=$ident;
@@ -12,11 +16,71 @@ $entreprise->nom=$_POST['txtnomentreprise'];
 $entreprise->logo="";
 $entreprise->villeid=$_POST['txtville'];
 $entreprise->adressecomp=$_POST['txtadressecomp'];
-if(isset($entreprise->ident) && isset($entreprise->adminid) && isset($entreprise->nom) && isset($entreprise->logo) && isset($entreprise->villeid) && isset($entreprise->adressecomp)){
+
+//nou pral kreye yo instans konfigiration pou add nan tblconfigurationboule la
+//$config=new configTypeBouleDao();
+if(isset($entreprise->ident) && isset($entreprise->adminid) && isset($entreprise->nom) && isset($entreprise->logo) && isset($entreprise->villeid) && isset($entreprise->adressecomp)  ){
   entrepriseDao::add($entreprise);
-  $sikse="antrepriz la anrejistre avek sikse.";
   
+  $sikse="antrepriz la anrejistre avek sikse.";
+  $config=new configTypeBouleDao();
+// n ap insere 4 tip boule yo pa defo nan tab konfigirasyon tip boul 
+  if(isset($sikse)){
+	for($i=0;$i<=4;$i++){
+		$ale=time()."".rand(1,100);
+		if($i==0){
+			$config->idconfig=$ale;
+			$config->entrepriseid=$ident;
+			$config->typebouleid=1;
+			$config->max=0;
+			$config->min=0;
+			$config->etattype=1;
+			configTypeBouleDao::add($config);
+	  }
+	  else if($i==1){
+		$config->idconfig=$ale;
+			$config->entrepriseid=$ident;
+			$config->typebouleid=2;
+			$config->max=0;
+			$config->min=0;
+			$config->etattype=1;
+			configTypeBouleDao::add($config);
+	  }
+	  else if($i==2){
+		$config->idconfig=$ale;
+			$config->entrepriseid=$ident;
+			$config->typebouleid=3;
+			$config->max=0;
+			$config->min=0;
+			$config->etattype=1;
+			configTypeBouleDao::add($config);
+	  }
+	  else if($i==3){
+		$config->idconfig=$ale;
+		$config->entrepriseid=$ident;
+		$config->typebouleid=4;
+		$config->max=0;
+		$config->min=0;
+		$config->etattype=1;
+		configTypeBouleDao::add($config);
+	  }else if($i==4){
+		$config->idconfig=$ale;
+		$config->entrepriseid=$ident;
+		$config->typebouleid=5;
+		$config->max=0;
+		$config->min=0;
+		$config->etattype=1;
+		configTypeBouleDao::add($config);
+	  }
+	 
+		  } 
 }
+	
+}
+
+
+
+
 
 ?>
 <!doctype html>
